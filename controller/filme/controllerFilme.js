@@ -7,12 +7,15 @@
 
 //Função para tratar a inserção de um novo filme no DAO
 const inserirFilme = async function (filme) {
+    let response={}
     if (filme.nome == '' || filme.nome == undefined || filme.nome == null || filme.nome.lenght>80 ||
         filme.duracao == '' || filme.duracao == undefined || filme.duracao == null || filme.duracao.lenght>5 ||
         filme.sinopse == '' || filme.sinopse == undefined || filme.sinopse == null ||
         filme.data_lancamento == '' || filme.data_lancamento == undefined || filme.data_lancamento == null || filme.data_lancamento.lenght>10 ||
         filme.foto_capa == undefined || filme.foto_capa .lenght>200 ||
         filme.link_trailer == undefined || filme.link_trailer.lenght>10){
+            response.status_code=400
+            response.message='Atributos Informados na requisição não estão de acordo. EX: Campos Obrigatórios, Quantidade de caracteres excedidos.'
         }
 }
 //Função para tratar a atualização de um novo filme no DAO
